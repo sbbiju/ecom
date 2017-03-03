@@ -23,3 +23,11 @@
     margin: 0px;
     display:none;
 }
+.navbar-static-top {
+    background-color: #5ACDFF;
+    border-color: #111314;
+}
+jumbotron {
+    padding-top: 0;
+    padding-bottom: 48px;
+}
