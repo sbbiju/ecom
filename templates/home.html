@@ -85,7 +85,7 @@ jumbotron {
 			<div class="item">
 				<div class="row">
 				{% for product in products3 %}
-					<div class="col-md-2 project-grid"><a href='{{ product.get_absolute_url }}'><img id='img' class='img-responsive' src='{{ product.get_image_url }}' /></a><br/></div>
+					<div class="col-md-2 project-grid"><a href='{{ product.get_absolute_url }}'><img id='img' class='img-responsive thumbnail' src='{{ product.get_image_url }}' /></a><br/></div>
 				{% endfor %}
 
 				</div><!--.row-->
