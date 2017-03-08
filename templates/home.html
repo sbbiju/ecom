@@ -10,18 +10,22 @@
 .navbar-static-top {
 	margin-bottom: 0px !important;
 }
-
-.jumbotron {
-	background-color:#5ACDFF;
-	color: #000;
-	{% if featured_image.make_image_background %} 
-	background-image: url("{{ featured_image.image.url }}");
-	background-repeat: no-repeat;
-	background-color: #000;
-	background-size: cover;
-	background-position-y: -272px;
-	{% endif %}
+jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    margin-top: -20px;
 }
+<!--.jumbotron {-->
+	<!--background-color:#5ACDFF;-->
+	<!--color: #000;-->
+	<!--{% if featured_image.make_image_background %}-->
+	<!--background-image: url("{{ featured_image.image.url }}");-->
+	<!--background-repeat: no-repeat;-->
+	<!--background-color: #000;-->
+	<!--background-size: cover;-->
+
+	<!--{% endif %}-->
+<!--}-->
 
 {% endblock %}
 </style>
@@ -30,22 +34,20 @@
      
 {% block jumbotron %}
 
-	{% if featured_image %}
+
+		{% if featured_image %}
 		<div class="jumbotron" >
 		 <div class="container">
 			<div class="row">
 				<div class='col-sm-12 text-center {% if featured_image.text_right %} pull-right {% endif %}'>
-				<h1>{{ featured_image.product.title }}</h1>
 				<p>{{ featured_image.product.description }}</p>
 				<!--<p>-->
 				<!--<a class="btn btn-lg btn-primary" href="{{ featured_image.product.get_absolute_url }}" role="button">More Details </a>-->
 				<!--</p>-->
 				</div>
-				{% if not featured_image.make_image_background %} 
 				<div class='col-sm-12' >
 					<a href="{{ featured_image.product.get_absolute_url }}"><img src="{{ featured_image.image.url }}" class='img-responsive' /></a>
 		 		</div>
-		 		{% endif %}
 				</div>
 			</div>
 		 </div>
@@ -68,6 +70,33 @@
 
 	 {% endif %}
 
+	<div class="container">
+			<div id="Carousel" class="carousel slide">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+
+			<div class="item active">
+				<div class="row">
+				{% for product in products2 %}
+					<div class="col-md-2 project-grid"><a href='{{ product.get_absolute_url }}'><img id='img' class='img-responsive thumbnail' src='{{ product.get_image_url }}' /></a><br/></div>
+				{% endfor %}
+				</div><!--.row-->
+			</div><!--.item-->
+			<div class="item">
+				<div class="row">
+				{% for product in products3 %}
+					<div class="col-md-2 project-grid"><a href='{{ product.get_absolute_url }}'><img id='img' class='img-responsive' src='{{ product.get_image_url }}' /></a><br/></div>
+				{% endfor %}
+
+				</div><!--.row-->
+			</div><!--.item-->
+			</div><!--.carousel-inner-->
+			  <a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
+			  <a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
+			</div><!--.Carousel-->
+	</div>
+
+
 
 {% endblock %}
 
@@ -89,7 +118,7 @@
 </div>
 
 
-<!-- 
+<!--
  {% if request.user.is_authenticated %}
 <h1>You are logged in!</h1>
 
@@ -110,7 +139,7 @@
 <div class="row">
 
   <div class="col-sm-3 pull-right">
-  	
+
 			<p class='lead text-align-center'>{{ title }}</p>
 
 			<form method='POST' action=''>{% csrf_token %}
@@ -127,7 +156,7 @@
 </div>
 
 <div class='col-sm-3'>
-<p class='lead text-align-center'>Created for Starters 
+<p class='lead text-align-center'>Created for Starters
 <br/>
 <span class='fa-stack fa-lg fa-5x'>
 <i class='fa fa-comment-o fa-stack-2x'></i>

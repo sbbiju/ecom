@@ -13,6 +13,7 @@ def home(request):
 	featured_image = ProductFeatured.objects.filter(active=True).order_by("?").first()
 	products = Product.objects.all().order_by("?")[:6]
 	products2 = Product.objects.all().order_by("?")[:6]
+	products3 = Product.objects.all().order_by("?")[6:]
 
 	form = SignUpForm(request.POST or None)
 	context = {
@@ -20,7 +21,8 @@ def home(request):
 		"form": form,
 		"featured_image":featured_image,
 		"products":products,
-		"products2":products2
+		"products2":products2,
+		"products3": products3
 	}
 
 
